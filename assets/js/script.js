@@ -4,6 +4,13 @@
 
 var apiTestEl = document.querySelector('#apiCall');
 
+//initialization for materialize js
+M.AutoInit();
+
+//$(document).ready(function(){
+//  $('select').formSelect();
+//});
+
 // gets the url of 20 dinner recipies that have to do with chicken
 //doesnt have a functional use yet
 function getApi() {
