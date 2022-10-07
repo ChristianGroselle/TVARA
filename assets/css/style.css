@@ -1,3 +1,22 @@
+*{
+    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  
+}
+body{
+
+
+    
+
+}
+h1{
+ 
+
+}
+
+
+
 #searchBar{
     height: 46px;
     border-radius: 48px;
@@ -5,5 +24,6 @@
     width: 100%;
     padding-right: 40px;
     padding-left: 10px;
+    background-color: white;
 
 }
