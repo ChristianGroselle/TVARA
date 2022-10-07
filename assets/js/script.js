@@ -4,8 +4,10 @@
 
 var apiTestEl = document.querySelector('#apiCall');
 
+// gets the url of 20 dinner recipies that have to do with chicken
+//doesnt have a functional use yet
 function getApi() {
-    // replace `octocat` with anyone else's GitHub username
+    
     var requestUrl = 'https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=eaff234d&app_key=4726246f26709a39dee3c8328f230c5e%09&mealType=Dinner&field=url';
   
     fetch(requestUrl)
@@ -24,4 +26,4 @@ function getApi() {
       });
   }
 
-  getApi();
+ //getApi();
