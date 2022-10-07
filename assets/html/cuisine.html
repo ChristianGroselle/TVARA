@@ -8,26 +8,114 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <title>Document</title>
+    <title>TVARA Search By Cuisine</title>
 </head>
 <body>
     <header class="col s12 m4 l2 center-align">
         <h2>Search by Cuisine</h2>
-        <h5>cooking made easy</h3>
+        <h5>cooking made easy with TVARA</h3>
     </header>
 
     <main class="container">
         <div class="row">
-            <div class="col s6">
+
+            <!-- Health/Diet modal structure -->
+            <div id="healthModal" class="modal">
+                <div class="modal-content">
+                  <h4>Health and Diet Restricitons</h4>
+                  <div class="container">
+                    <div class="input-field col s12">
+                        <select multiple>
+                          <option value="" disabled selected>Choose your option</option>
+                          <option value="1">Alcohol-Free</option>
+                          <option value="2">Celery-Free</option>
+                          <option value="3">Crustcean-Free</option>
+                          <option value="4">Dairy-Free</option>
+                          <option value="5">DASH(Dietary Approaches to Stop Hypertension)</option>
+                          <option value="6">Egg-Free</option>
+                          <option value="7">Fish-Free</option>
+                          <option value="8">FODMAP-Free</option>
+                          <option value="9">Gluten-Free</option>
+                          <option value="10">Immuno-Supportive</option>
+                          <option value="11">Keto-Friendly</option>
+                          <option value="12">Kidney-Friendly</option>
+                          <option value="13">Kosher</option>
+                          <option value="14">Low Potassium</option>
+                          <option value="15">Low Sugar</option>
+                          <option value="16">Lupine-Free</option>
+                          <option value="17">Mediterranean Diet</option>
+                          <option value="18">Mollusk-Free</option>
+                          <option value="19">Mustard-Free</option>
+                          <option value="20">No oil added</option>
+                          <option value="21">Paleo</option>
+                          <option value="22">Peanut-Free</option>
+                          <option value="23">Pescatarian</option>
+                          <option value="24">Pork-Free</option>
+                          <option value="25">Red-Meat-Free</option>
+                          <option value="26">Sesame-Free</option>
+                          <option value="27">Shellfish-Free</option>
+                          <option value="28">Soy-Free</option>
+                          <option value="29">Sugar-Conscious</option>
+                          <option value="30">Sulfite-Free</option>
+                          <option value="31">Tree-Nut-Free</option>
+                          <option value="32">Vegan</option>
+                          <option value="33">Vegetarian</option>
+                          <option value="34">Wheat-Free</option>
+                        </select>
+                        <label>Health Restricitons</label>
+                    </div>
+                    
+                    <div class="input-field col s12 bottom-margin">
+                        <select multiple>
+                          <option value="" disabled selected>Choose your option</option>
+                          <option value="1">Balanced</option>
+                          <option value="2">High-Fiber</option>
+                          <option value="3">High-Protein</option>
+                          <option value="4">Low-Carb</option>
+                          <option value="5">Low-Fat</option>
+                          <option value="6">Low-Sodium</option>
+                        </select>
+                        <label>Diet Goals</label>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="modal-footer col s12">
+                  <!-- <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a> -->
+                  <button class="modal-close btn waves-effect waves-light" type="submit" name="action">Submit
+                    <!-- <i class="material-icons right">send</i> -->
+                  </button>
+                </div>
+            </div>
+            <!-- left side -->
+            <div class="col s12 m6">
                 <!-- Cuisine selection dropdown -->
                 <div class="col s12">
                     <div class="card">
                         <div class="input-field">
                             <select>
                                 <option value="" disabled selected>Cuisine</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
+                                <option value="1">American</option>
+                                <option value="2">Asian</option>
+                                <option value="3">British</option>
+                                <option value="4">Caribbean</option>
+                                <option value="5">Central europe</option>
+                                <option value="6">Chinese</option>
+                                <option value="7">Eastern europe</option>
+                                <option value="8">French</option>
+                                <option value="9">Greek</option>
+                                <option value="10">Indian</option>
+                                <option value="11">Italian</option>
+                                <option value="12">Japanese</option>
+                                <option value="13">Korean</option>
+                                <option value="14">Kosher</option>
+                                <option value="15">Mediterranean</option>
+                                <option value="16">Mexican</option>
+                                <option value="17">Middle Eastern</option>
+                                <option value="18">Nordic</option>
+                                <option value="19">South American</option>
+                                <option value="20">South East Asian</option>
+                                <option value="21">World</option>
                             </select>
                             <label>Cuisine Selection</label>
                         </div>
@@ -40,22 +128,17 @@
                         <div class="input-field">
                             <select>
                                 <option value="" disabled selected>Meal Type</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
+                                <option value="1">Breakfast</option>
+                                <option value="2">Brunch</option>
+                                <option value="3">Lunch/Dinner</option>
+                                <option value="4">Snack</option>
+                                <option value="5">Teatime</option>
                             </select>
                             <label>Meal Type</label>
                         </div>
                     </div>
                 </div>
 
-                <!-- Health/Diet Modal -->
-                <div class="col s12">
-                    <div class="card">
-                        <!-- Modal Trigger -->
-                        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-                    </div>
-                </div>
                 <!-- Keyword Searchbox -->
                 <div class="col s12">
                     <div class="card">
@@ -64,6 +147,75 @@
                             <label for="first_name">Keyword</label>
                         </div>
                     </div>
+                </div>
+
+                <!-- Health/Diet Modal -->
+                <div class="col s12 m6">
+                    <!-- Modal Trigger -->
+                    <a class="waves-effect waves-light btn-large modal-trigger" href="#healthModal">Diets/Health Restricitons</a>
+                </div>
+                <div class="col s12 m6 right-align">
+                    <button class="btn-large waves-effect waves-light" type="submit" name="action">Search</button>
+                </div>
+            </div>
+            <!-- right side -->
+            <!-- Recipe response cards -->
+            <div class="col s12 m6">
+                <div class="card col s12">
+                    <ul id="recipeList">
+                        <!-- build in js -->
+                        <li>
+                            <div class="card-panel grey lighten-5 z-depth-1">
+                                <div class="row valign-wrapper">
+                                  <div class="col s4">
+                                    <img src="../images/200.jfif" alt="" class="circle responsive-img">
+                                  </div>
+                                  <div class="col s8">
+                                    <span class="black-text">
+                                        <h4>Recipe Title</h4>
+                                        <div>
+                                            recipe description
+                                        </div>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                        </li>
+                        <li>
+                            <div class="card-panel grey lighten-5 z-depth-1">
+                                <div class="row valign-wrapper">
+                                  <div class="col s4">
+                                    <img src="../images/200.jfif" alt="" class="circle responsive-img">
+                                  </div>
+                                  <div class="col s8">
+                                    <span class="black-text">
+                                        <h4>Recipe Title</h4>
+                                        <div>
+                                            recipe description
+                                        </div>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                        </li>
+                        <li>
+                            <div class="card-panel grey lighten-5 z-depth-1">
+                                <div class="row valign-wrapper">
+                                  <div class="col s4">
+                                    <img src="../images/200.jfif" alt="" class="circle responsive-img">
+                                  </div>
+                                  <div class="col s8">
+                                    <span class="black-text">
+                                        <h4>Recipe Title</h4>
+                                        <div>
+                                            recipe description
+                                        </div>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
