@@ -20,29 +20,6 @@ var temp = 0;
 //initialization for materialize js
 M.AutoInit();
 
-// gets the url of 20 dinner recipies that have to do with chicken
-//doesnt have a functional use yet
-function getApi(requestUrl) {
-    
-    //var requestUrl = 'https://api.edamam.com/api/recipes/v2?type=public&app_id=eaff234d&app_key=4726246f26709a39dee3c8328f230c5e%09&mealType=Dinner&field=url&field=label&field=images&field=totalTime&field=uri&field=yield';
-  
-    fetch(requestUrl)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data);
-        console.log(data.hits.length);
-        // for (var i = 0; i < data.hits.length; i++) {
-        // console.log(data[i]);
-        // var listItem = document.createElement('li');
-        // listItem.textContent = data.hits[i].recipe.url;
-        // apiTestEl.appendChild(listItem);
-        //}
-      });
-  }
-
-
 //for grabbing muliple health restrictions
 function getHealthParam(i){
   if(i == 1){
@@ -136,10 +113,9 @@ function getDietParam(i){
   }
 }
 
-function buildRecipeCard(rTitle, rDesc, rLink, rImg) {
-    temp++;
-    console.log(temp);
-    recipeCardListEl.append('<li><div class="card-panel grey lighten-5 z-depth-1"><div class="row valign-wrapper"><div class="col s4"><img src="'+rImg+'" alt="" class="circle responsive-img"></div><div class="col s8"><span class="black-text"><h4>'+rTitle+'</h4><div>'+rDesc+'</div></span></div></div></div></li>');
+//builds the HTML for the recipe cards
+function buildRecipeCard(rTitle, rLink, rImg, rTime, rYield) {
+    recipeCardListEl.append('<li><div class="card-panel grey lighten-5 z-depth-1"><div class="row valign-wrapper"><div class="col s4"><img src="'+rImg+'" alt="recipe" class="circle responsive-img"></div><div class="col s8"><span class="black-text"><h4>'+rTitle+'</h4><div>Cooking Time: '+rTime+'</div><div>Feeds: '+rYield+'</div></span></div></div><div class="card-action"><div class="col s6"><a class="btn waves-effect waves-light left-align" href="'+rLink+'">Source</a></div><div class="col s6"><button class="btn waves-effect waves-light right-align">Cook!</button></div></div></div></li>');
   }
 
 //building the API request url
@@ -262,6 +238,43 @@ function buildApiURL(){
   workingURL += "&field=url&field=label&field=images&field=totalTime&field=uri&field=yield";
 
   return workingURL;
+}
+
+function getApi(requestUrl) {
+    
+  //var requestUrl = 'https://api.edamam.com/api/recipes/v2?type=public&app_id=eaff234d&app_key=4726246f26709a39dee3c8328f230c5e%09&mealType=Dinner&field=url&field=label&field=images&field=totalTime&field=uri&field=yield';
+
+  fetch(requestUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      console.log(data.hits.length);
+      
+      for(let i = 0; i < data.hits.length;i++){
+        let title = data.hits[i].recipe.label;
+        let link = data.hits[i].recipe.url;
+        let imgSrc = data.hits[i].recipe.images.SMALL.url;
+        let cTime = data.hits[i].recipe.totalTime;
+        let cYield = data.hits[i].recipe.yield;
+
+        if(cTime < 1){
+          cTime = 'N/A';
+        }
+        if(cYield < 1){
+          cYield = 'N/A';
+        }
+
+        buildRecipeCard(title, link, imgSrc, cTime, cYield);
+      }
+      // for (var i = 0; i < data.hits.length; i++) {
+      // console.log(data[i]);
+      // var listItem = document.createElement('li');
+      // listItem.textContent = data.hits[i].recipe.url;
+      // apiTestEl.appendChild(listItem);
+      //}
+    });
 }
 
 searchBtnEl.click(function() {
