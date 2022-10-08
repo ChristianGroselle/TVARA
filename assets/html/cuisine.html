@@ -20,12 +20,13 @@
         <div class="row">
 
             <!-- Health/Diet modal structure -->
-            <div id="healthModal" class="modal">
+            <div id="healthModal" class="modal modal-fixed-footer">
                 <div class="modal-content">
-                  <h4>Health and Diet Restricitons</h4>
-                  <div class="container">
+                    <div class="container">
+                        <h4>Health and Diet Restricitons</h4>
+                    
                     <div class="input-field col s12">
-                        <select multiple>
+                        <select multiple id="healthSelect">
                           <option value="" disabled selected>Choose your option</option>
                           <option value="1">Alcohol-Free</option>
                           <option value="2">Celery-Free</option>
@@ -66,7 +67,7 @@
                     </div>
                     
                     <div class="input-field col s12 bottom-margin">
-                        <select multiple>
+                        <select multiple id="dietSelect">
                           <option value="" disabled selected>Choose your option</option>
                           <option value="1">Balanced</option>
                           <option value="2">High-Fiber</option>
@@ -93,7 +94,7 @@
                 <div class="col s12">
                     <div class="card">
                         <div class="input-field">
-                            <select>
+                            <select id="cuisineSelect">
                                 <option value="" disabled selected>Cuisine</option>
                                 <option value="1">American</option>
                                 <option value="2">Asian</option>
@@ -126,13 +127,14 @@
                 <div class="col s12">
                     <div class="card">
                         <div class="input-field">
-                            <select>
+                            <select id="mealSelect">
                                 <option value="" disabled selected>Meal Type</option>
                                 <option value="1">Breakfast</option>
                                 <option value="2">Brunch</option>
-                                <option value="3">Lunch/Dinner</option>
-                                <option value="4">Snack</option>
-                                <option value="5">Teatime</option>
+                                <option value="3">Lunch</option>
+                                <option value="4">Dinner</option>
+                                <option value="5">Snack</option>
+                                <option value="6">Teatime</option>
                             </select>
                             <label>Meal Type</label>
                         </div>
@@ -143,7 +145,7 @@
                 <div class="col s12">
                     <div class="card">
                         <div class="input-field">
-                            <input placeholder="Keyword Search" type="text" class="validate">
+                            <input placeholder="Keyword Search" type="text" class="validate" id="keyWordInput">
                             <label for="first_name">Keyword</label>
                         </div>
                     </div>
@@ -155,7 +157,7 @@
                     <a class="waves-effect waves-light btn-large modal-trigger" href="#healthModal">Diets/Health Restricitons</a>
                 </div>
                 <div class="col s12 m6 right-align">
-                    <button class="btn-large waves-effect waves-light" type="submit" name="action" id="searchBtn">Search</button>
+                    <button class="btn-large waves-effect waves-light" id="searchBtn">Search</button>
                 </div>
             </div>
             <!-- right side -->
@@ -164,23 +166,6 @@
                 <div class="card col s12">
                     <ul id="recipeList">
                         <!-- build in js -->
-                        <!-- <li>
-                            <div class="card-panel grey lighten-5 z-depth-1">
-                                <div class="row valign-wrapper">
-                                  <div class="col s4">
-                                    <img src="../images/200.jfif" alt="" class="circle responsive-img">
-                                  </div>
-                                  <div class="col s8">
-                                    <span class="black-text">
-                                        <h4>Recipe Title</h4>
-                                        <div>
-                                            recipe description
-                                        </div>
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-                        </li>
                         <li>
                             <div class="card-panel grey lighten-5 z-depth-1">
                                 <div class="row valign-wrapper">
@@ -191,30 +176,24 @@
                                     <span class="black-text">
                                         <h4>Recipe Title</h4>
                                         <div>
-                                            recipe description
+                                            Cooking Time: N/A
                                         </div>
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-                        </li>
-                        <li>
-                            <div class="card-panel grey lighten-5 z-depth-1">
-                                <div class="row valign-wrapper">
-                                  <div class="col s4">
-                                    <img src="../images/200.jfif" alt="" class="circle responsive-img">
-                                  </div>
-                                  <div class="col s8">
-                                    <span class="black-text">
-                                        <h4>Recipe Title</h4>
                                         <div>
-                                            recipe description
+                                            Feeds: N/A
                                         </div>
                                     </span>
                                   </div>
+                                  </div>
+                                  <div class="card-action">
+                                    <div class="col s6">
+                                    <a class="btn waves-effect waves-light left-align" href="https://google.com">Source</a>
+                                    </div>
+                                    <div class="col s6">
+                                    <button class="btn waves-effect waves-light right-align">Cook!</button>
+                                    </div>
+                                    </div>
                                 </div>
-                              </div>
-                        </li> -->
+                        </li>
                     </ul>
                 </div>
             </div>
