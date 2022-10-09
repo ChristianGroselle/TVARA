@@ -122,8 +122,9 @@ function getDietParam(i){
 }
 
 //builds the HTML for the recipe cards
-function buildRecipeCard(rTitle, rLink, rImg, rTime, rYield) {
-    recipeCardListEl.append('<li><div class="card-panel grey lighten-5 z-depth-1"><div class="row valign-wrapper"><div class="col s4"><img src="'+rImg+'" alt="recipe" class="circle responsive-img"></div><div class="col s8"><span class="black-text"><h4>'+rTitle+'</h4><div>Cooking Time: '+rTime+'</div><div>Feeds: '+rYield+'</div></span></div></div><div class="card-action"><div class="col s6"><a class="btn waves-effect waves-light left-align" href="'+rLink+'">Source</a></div><div class="col s6"><button class="btn waves-effect waves-light right-align">Cook!</button></div></div></div></li>');
+//needs recipie detail page to be built before it can be finalized
+function buildRecipeCard(rTitle, rLink, rImg, rTime, rYield, rID) {
+    recipeCardListEl.append('<li><div class="card-panel grey lighten-5 z-depth-1"><div class="row valign-wrapper"><div class="col s4"><img src="'+rImg+'" alt="recipe" class="circle responsive-img"></div><div class="col s8"><span class="black-text"><h4>'+rTitle+'</h4><div>Cooking Time: '+rTime+'</div><div>Feeds: '+rYield+'</div></span></div></div><div class="card-action"><div class="col s6"><a class="btn waves-effect waves-light left-align" href="'+rLink+'">Source</a></div><div class="col s6"><a class="btn waves-effect waves-light right-align" href="">Cook!</a></div></div></div></li>');
   }
 
 //building the API request url
@@ -275,6 +276,11 @@ function getApi(requestUrl) {
         let imgSrc = data.hits[i].recipe.images.SMALL.url;
         let cTime = data.hits[i].recipe.totalTime;
         let cYield = data.hits[i].recipe.yield;
+        let npRecId = data.hits[i].recipe.uri;
+        //cuts the recipe id out of the uri
+        let pRecId = npRecId.slice((npRecId.indexOf("recipe_") + 7), npRecId.length);
+        console.log("id: " + pRecId);
+
 
         if(cTime < 1){
           cTime = 'N/A';
@@ -324,3 +330,5 @@ prevPageBtnEl.click(function() {
     console.log(previousUrls[pageIndex]);
   }
 })
+
+//console.log(window.location.href);
