@@ -6,6 +6,9 @@ var apiTestEl = document.querySelector('#apiCall');
 var recipeCardListEl = $('#recipeList');
 
 var searchBtnEl = $('#searchBtn');
+var nxtPageBtnEl = $('#nxtPageBtn');
+var prevPageBtnEl = $('#prevPageBtn');
+
 
 var cuisineSelectEl = $('#cuisineSelect');
 var mealTypeSelectEl = $('#mealSelect');
@@ -15,8 +18,9 @@ var keyWordSearchEl = $('#keyWordInput');
 var healthSelectEl = document.querySelector('#healthSelect');
 var dietSelectEl = document.querySelector('#dietSelect');
 
-var temp = 0;
-
+var nxtPageUrl = "";
+var previousUrls = [];
+var pageIndex = 0;
 //initialization for materialize js
 M.AutoInit();
 
@@ -243,7 +247,9 @@ function buildApiURL(){
 function getApi(requestUrl) {
     
   //var requestUrl = 'https://api.edamam.com/api/recipes/v2?type=public&app_id=eaff234d&app_key=4726246f26709a39dee3c8328f230c5e%09&mealType=Dinner&field=url&field=label&field=images&field=totalTime&field=uri&field=yield';
-
+  previousUrls.push(requestUrl);
+  //pageIndex++;
+  console.log(previousUrls + " " + pageIndex);
   fetch(requestUrl)
     .then(function (response) {
       return response.json();
@@ -252,6 +258,7 @@ function getApi(requestUrl) {
       console.log(data);
       console.log(data.hits.length);
       
+      nxtPageUrl = data._links.next.href;
       for(let i = 0; i < data.hits.length;i++){
         let title = data.hits[i].recipe.label;
         let link = data.hits[i].recipe.url;
@@ -261,6 +268,8 @@ function getApi(requestUrl) {
 
         if(cTime < 1){
           cTime = 'N/A';
+        } else {
+          cTime += ' minutes';
         }
         if(cYield < 1){
           cYield = 'N/A';
@@ -268,19 +277,29 @@ function getApi(requestUrl) {
 
         buildRecipeCard(title, link, imgSrc, cTime, cYield);
       }
-      // for (var i = 0; i < data.hits.length; i++) {
-      // console.log(data[i]);
-      // var listItem = document.createElement('li');
-      // listItem.textContent = data.hits[i].recipe.url;
-      // apiTestEl.appendChild(listItem);
-      //}
     });
 }
 
 searchBtnEl.click(function() {
   let requestURL = buildApiURL();
+  recipeCardListEl.empty();
   getApi(requestURL);
   console.log(requestURL);
 });
+
+nxtPageBtnEl.click(function() {
+  pageIndex++;
+  recipeCardListEl.empty();
+  getApi(nxtPageUrl);
+  console.log(nxtPageUrl);
+})
+
+prevPageBtnEl.click(function() {
+  if(pageIndex > 0){
+    recipeCardListEl.empty();
+    getApi(previousUrls[pageIndex-1]);
+    console.log(previousUrls[pageIndex-1]);
+  }
+})
 
 //getApi();

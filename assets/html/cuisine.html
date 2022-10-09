@@ -96,6 +96,7 @@
                         <div class="input-field">
                             <select id="cuisineSelect">
                                 <option value="" disabled selected>Cuisine</option>
+                                <option value="0">None</option>
                                 <option value="1">American</option>
                                 <option value="2">Asian</option>
                                 <option value="3">British</option>
@@ -129,6 +130,7 @@
                         <div class="input-field">
                             <select id="mealSelect">
                                 <option value="" disabled selected>Meal Type</option>
+                                <option value="0">None</option>
                                 <option value="1">Breakfast</option>
                                 <option value="2">Brunch</option>
                                 <option value="3">Lunch</option>
@@ -163,7 +165,17 @@
             <!-- right side -->
             <!-- Recipe response cards -->
             <div class="col s12 m6">
+                
+                <div class="card-panel col s12">
+                    <div class="col s6 center-align">
+                        <a class="waves-effect waves-light btn-large" id="prevPageBtn">Previous</a>
+                    </div>
+                    <div class="col s6 center-align">
+                        <a class="waves-effect waves-light btn-large" id="nxtPageBtn">Next</a>
+                    </div>
+                </div>
                 <div class="card col s12">
+                    
                     <ul id="recipeList">
                         <!-- build in js -->
                         <!-- <li>
