@@ -12,6 +12,7 @@ var prevPageBtnEl = $('#prevPageBtn');
 
 var cuisineSelectEl = $('#cuisineSelect');
 var mealTypeSelectEl = $('#mealSelect');
+var dishTypeSelectEl = $('#dishSelect');
 var keyWordSearchEl = $('#keyWordInput');
 var pgNumEl = $('#pgNum');
 var totalPageEl = $('#totalPage');
@@ -121,6 +122,45 @@ function getDietParam(i){
   }
 }
 
+function getDishParam(i){
+    if(i == 1){
+        return("alcohol%20cocktail");
+      } else if(i == 2){
+        return("biscuits%20and%20cookies");
+      } else if(i == 3){
+        return("bread");
+      } else if(i == 4){
+        return("cereals");
+      } else if(i == 5){
+        return("condiments%20and%20sauces");
+      } else if(i == 6){
+        return("desserts");
+      } else if(i == 7){
+        return("drinks");
+      } else if(i == 8){
+        return("egg");
+      } else if(i == 9){
+        return("main%20course");
+      } else if(i == 10){
+        return("pancake");
+      } else if(i == 11){
+        return("preps");
+      } else if(i == 12){
+        return("preserve");
+      } else if(i == 13){
+        return("salad");
+      } else if(i == 14){
+        return("sandwiches");
+      } else if(i == 15){
+        return("soup");
+      } else if(i == 16){
+        return("special%20occasions");
+      } else if(i == 17){
+        return("starter");
+      } else{
+        return null;
+      }
+}
 //builds the HTML for the recipe cards
 //needs recipie detail page to be built before it can be finalized
 function buildRecipeCard(rTitle, rLink, rImg, rTime, rYield, rID) {
@@ -131,6 +171,7 @@ function buildRecipeCard(rTitle, rLink, rImg, rTime, rYield, rID) {
 function buildApiURL(){
   let cuisine = cuisineSelectEl.find(':selected').val();
   let meal = mealTypeSelectEl.find(':selected').val();
+  let dish = dishTypeSelectEl.find(':selected').val();
   let keyWord = keyWordSearchEl.val();
   let healthInstance = M.FormSelect.getInstance(healthSelectEl);
   let dietInstance = M.FormSelect.getInstance(dietSelectEl);
@@ -140,7 +181,7 @@ function buildApiURL(){
   let cuisineParam = "";
   let mealParam = "";
 
-  let workingURL = "https://api.edamam.com/api/recipes/v2?type=public&"
+  let workingURL = "https://api.edamam.com/api/recipes/v2?type=public"
   //assining users selection to the api specific parameter
   if(cuisine){
     if(cuisine == 1){
@@ -241,6 +282,11 @@ function buildApiURL(){
     workingURL += "&mealType="+mealParam;
   }
 
+  //adding dish selector if applicable
+  if(getDishParam(dish)){
+    workingURL += "&dishType="+getDishParam(dish);
+  }
+
   //finishing the URL with fixed request
   workingURL += "&field=url&field=label&field=images&field=totalTime&field=uri&field=yield";
 
@@ -279,7 +325,7 @@ function getApi(requestUrl) {
         let npRecId = data.hits[i].recipe.uri;
         //cuts the recipe id out of the uri
         let pRecId = npRecId.slice((npRecId.indexOf("recipe_") + 7), npRecId.length);
-        console.log("id: " + pRecId);
+        //console.log("id: " + pRecId);
 
 
         if(cTime < 1){
