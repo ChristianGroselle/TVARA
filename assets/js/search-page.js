@@ -1,4 +1,3 @@
-//edamam api testing
 //test request url
 //https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=eaff234d&app_key=4726246f26709a39dee3c8328f230c5e%09&mealType=Dinner&field=url
 
