@@ -3,15 +3,20 @@
   padding: 0;
   margin: 0;
   font-family: "Krona One";
+  overflow:auto;
+}
+
+html{
+  background-image: url("/assets/images/homepage-food.webp");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  height: 100%;
 }
 
 body {
-  background-color: #696969;
   text-align: center;
-}
-
-header {
-  color: darkgoldenrod;
 }
 
 .btn {
@@ -39,7 +44,7 @@ align-items: center;
   padding-left: 10px;
   background-color: white;
   margin-bottom: 20px;
-}
+} 
 
 
 .bottom-margin {
