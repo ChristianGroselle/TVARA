@@ -40,3 +40,6 @@ align-items: center;
   background-color: white;
   margin-bottom: 20px;
 }
+.bottom-margin {
+    margin-bottom: 70%;
+}
