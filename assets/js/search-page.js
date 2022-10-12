@@ -249,7 +249,7 @@ function buildApiURL(){
     let formatedKeyWord = keyWord.trim();
     formatedKeyWord = formatedKeyWord.replace(/ /g, '%20');
     //adding the keyword querySelector into the URL
-    workingURL += "q="+formatedKeyWord;
+    workingURL += "&q="+formatedKeyWord;
   }
   //adding the API auth key
   workingURL += "&app_id=eaff234d&app_key=4726246f26709a39dee3c8328f230c5e%09";
