@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>TVARA Recipe Breakdown</title>
+</head>
+<body>
+    <header class="col s12 m4 l2 center-align">
+        <h3 id="titleTxt"></h3>
+        <h5>Brought to you by TVARA</h5>
+    </header>
+
+    <main class="container">
+        <div class="row">
+            <!-- left third -->
+            <div class="col s12 m4">
+                <div class="">
+                <!-- broad info card -->
+                    <div class="col s12">
+                        <div class="card-panel">
+                            <ul class="collection">
+                                <li class="collection-item" id="rTime"></li>
+                                <li class="collection-item" id="rYield"></li>
+                                <li class="collection-item" id="rCal"></li>
+                              </ul>
+                              <a class="btn waves-effect waves-light red" id="rUrl">Source</a>
+                        </div>
+                    </div>
+
+                    <!-- image card -->
+                    <div class="col s12">
+                        <div class="card">
+                            <div class="card-image">
+                                <img id="rImg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- right 2/3 -->
+            <div class="col s12 m8">
+                <!-- tabbed card -->
+                <div class="col s12">
+                    <div class="">
+                        <div class="card">
+                              <div class="card-tabs">
+                                <ul class="tabs tabs-fixed-width">
+                                  <li class="tab"><a href="#ingTab">ingredients</a></li>
+                                  <li class="tab"><a href="#nutTab">Nutrients</a></li>
+                                  <li class="tab"><a href="#labelTab">Labels</a></li>
+                                </ul>
+                              </div>
+                              <div class="card-content">
+                                <div id="ingTab">
+                                    <table class="striped">
+                                        <thead>
+                                          <tr>
+                                              <th>Food</th>
+                                              <th>Quantity</th>
+                                              <th>Item Price</th>
+                                          </tr>
+                                        </thead>
+                                
+                                        <tbody id="ingTable">
+                                          <!-- <tr>
+                                            <td>food</td>
+                                            <td>quantity</td>
+                                            <td> N/A </td>
+                                          </tr> -->
+                                          
+                                        </tbody>
+                                      </table>
+                                </div>
+                                <div id="nutTab">
+                                    <table class="striped">
+                                        <thead>
+                                          <tr>
+                                              <th>Nutrient</th>
+                                              <th>Quantity</th>
+                                              
+                                          </tr>
+                                        </thead>
+                                
+                                        <tbody id="nutTable">
+                                          <!-- <tr>
+                                            <td>Alvin</td>
+                                            <td>Eclair</td>
+                                          </tr> -->
+                                        </tbody>
+                                      </table>
+                                </div>
+                                <div id="labelTab">
+                                    <div class="card">
+                                        <div class="card-tabs">
+                                            <ul class="tabs tabs-fixed-width">
+                                              <li class="tab"><a href="#healthTab">Health Labels</a></li>
+                                              <li class="tab"><a href="#dietTab">Diet Labels</a></li>
+                                              <li class="tab"><a href="#cautTab">Cautions</a></li>
+                                            </ul>
+                                          </div>
+
+                                          <div class="card-content grey lighten-4">
+                                            <div id="healthTab">
+                                                <table class="striped">
+                                                    <thead>
+                                                      <tr>
+                                                          <th>Health Labels</th>
+                                                      </tr>
+                                                    </thead>
+                                            
+                                                    <tbody id="healthTable">
+                                                      <!-- <tr>
+                                                        <td>Alvin</td>
+                                                      </tr> -->
+                                                    </tbody>
+                                                  </table>
+                                            </div>
+
+                                            <div id="dietTab">
+                                                <table class="striped">
+                                                    <thead>
+                                                      <tr>
+                                                          <th>Diet Labels</th>
+                                                      </tr>
+                                                    </thead>
+                                            
+                                                    <tbody id="dietTable">
+                                                      <!-- <tr>
+                                                        <td>Alvin</td>
+                                                      </tr> -->
+                                                    </tbody>
+                                                  </table>
+                                            </div>
+
+                                            <div id="cautTab">
+                                                <table class="striped">
+                                                    <thead>
+                                                      <tr>
+                                                          <th>Caution Labels</th>
+                                                      </tr>
+                                                    </thead>
+                                            
+                                                    <tbody id="cautTable">
+                                                      <!-- <tr>
+                                                        <td>Alvin</td>
+                                                      </tr> -->
+                                                    </tbody>
+                                                  </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/recipe-breakdown.js"></script>
+</body>
+</html>
