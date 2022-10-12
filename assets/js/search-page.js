@@ -324,7 +324,7 @@ function getApi(requestUrl) {
         let npRecId = data.hits[i].recipe.uri;
         //cuts the recipe id out of the uri
         let pRecId = npRecId.slice((npRecId.indexOf("recipe_") + 7), npRecId.length);
-
+        //pRecId += "||";
 
         if(cTime < 1){
           cTime = 'N/A';

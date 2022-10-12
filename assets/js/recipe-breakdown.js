@@ -17,12 +17,14 @@ var dietTableEl = $('#dietTable');
 var cautionTableEl = $('#cautTable');
 
 var recipeId = "";
+var nutRefArray = ['SUGAR.added','CA','CHOCDF.net','CHOCDF','CHOLE','ENERC_KCAL','FAMS','FAPU','FAPU','FASAT','FATRN','FIBTG','FOLDFE','FOLFD','FOLAC','FE','MG','NIA','P','K','PROCNT','RIBF','NA','Sugar.alcohol','SUGAR','THIA','FAT','VITA_RAE','VITB12','VITB6A','VITC','VITD','TOCPHA','VITK1','WATER','ZN'];
 
 //reads the query parameters
 function readQParam(currUrl){
     
-    return(currUrl.slice((currUrl.indexOf("?=") + 2), currUrl.indexOf('#')));
+    return(currUrl.slice((currUrl.indexOf("?=") + 2), currUrl.lenght));
 }
+
 
 //building the API request url
 function buildApiURL(){
@@ -59,7 +61,7 @@ function buildApiURL(){
         let yield = data.recipe.yield;
         let cal = Math.round(data.recipe.calories);
         let url = data.recipe.url;
-        let img = data.recipe.images.LARGE.url;
+        let img = data.recipe.images.REGULAR.url;
 
 
         titleEl.text(title);
@@ -93,16 +95,19 @@ function buildApiURL(){
 
             ingTableEl.append('<tr><td>' + iName + '</td><td>' + iQuant + ' ' + unit + '</td><td> N/A </td></tr>');
         }
-        // for(let i = 0; i < data.recipe.totalNutrients.length; i++){
-        //     let label = data.recipe.totalNutrients[i].label;
-        //     let quant = data.recipe.totalNutrients[i].quantity;
-        //     let unit = data.recipe.totalNutrients[i].unit;
 
-        //     quant = Math.round((quant + Number.EPSILON) * 100) / 100
-        //     if(quant > 0){
-        //         nutTableEl.append('<tr><td>' + label + '</td><td>' + quant + ' ' + unit + '</td>');
-        //     }
-        // }
+        
+        for(let i = 0; i < nutRefArray.length; i++){
+            let indexNut = nutRefArray[i];
+            if(data.recipe.totalNutrients[indexNut]){
+                let label = data.recipe.totalNutrients[indexNut].label;
+                let quant = data.recipe.totalNutrients[indexNut].quantity;
+                let unit = data.recipe.totalNutrients[indexNut].unit;
+                quant = Math.round((quant + Number.EPSILON) * 100) / 100
+                
+                nutTableEl.append('<tr><td>' + label + '</td><td>' + quant + ' ' + unit + '</td></tr>');
+            } 
+        }
 
         for(let i = 0; i < data.recipe.healthLabels.length; i++){
             healthTableEl.append('<tr><td>' + data.recipe.healthLabels[i] + '</td></tr>');
