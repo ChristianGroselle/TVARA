@@ -96,7 +96,7 @@ function buildApiURL(){
             ingTableEl.append('<tr><td>' + iName + '</td><td>' + iQuant + ' ' + unit + '</td><td> N/A </td></tr>');
         }
 
-        
+        //building Nutruebts list
         for(let i = 0; i < nutRefArray.length; i++){
             let indexNut = nutRefArray[i];
             if(data.recipe.totalNutrients[indexNut]){
@@ -109,6 +109,7 @@ function buildApiURL(){
             } 
         }
 
+        //building Label lists
         for(let i = 0; i < data.recipe.healthLabels.length; i++){
             healthTableEl.append('<tr><td>' + data.recipe.healthLabels[i] + '</td></tr>');
         }
