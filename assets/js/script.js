@@ -24,4 +24,4 @@ function getApi() {
       });
   }
 
-  getApi();
+  // getApi();

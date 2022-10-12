@@ -1,29 +1,42 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
-  
-}
-body{
-
-
-    
-
-}
-h1{
- 
-
+  font-family: "Krona One";
 }
 
+body {
+  background-color: #696969;
+  text-align: center;
+}
+
+header {
+  color: darkgoldenrod;
+}
+
+.btn {
+  margin: auto;
+  background-color: black;
+  display: inline-block;
+  border-radius:10px ;
+}
 
 
-#searchBar{
-    height: 46px;
-    border-radius: 48px;
-    border: 1px solid black;
-    width: 100%;
-    padding-right: 40px;
-    padding-left: 10px;
-    background-color: white;
+#homepageImg{
+margin: 10px;
+align-items: center;
 
+
+
+}
+
+#searchBar {
+  height: 46px;
+  border-radius: 48px;
+  border: 2px solid black;
+  width: 100%;
+  padding-right: 40px;
+  padding-left: 10px;
+  background-color: white;
+  margin-bottom: 20px;
 }
