@@ -11,9 +11,30 @@
     <title>TVARA Recipe Breakdown</title>
 </head>
 <body>
+
+    <!-- nav bar for quickly navigating the pages -->
+
+    <nav class="black">
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">TVARA</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="./search.html">Search</a></li>
+            <li><a href="#">Saved</a></li>
+          </ul>
+        </div>
+    </nav>
+    
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="./search.html">Search</a></li>
+        <li><a href="#">Saved</a></li>
+      </ul>
+
     <header class="col s12 m4 l2 center-align">
         <h3 id="titleTxt"></h3>
-        <h5>Brought to you by TVARA</h5>
+        <!-- <h5>Brought to you by TVARA</h5> -->
     </header>
 
     <main class="container">
@@ -29,7 +50,8 @@
                                 <li class="collection-item" id="rYield"></li>
                                 <li class="collection-item" id="rCal"></li>
                               </ul>
-                              <a class="btn waves-effect waves-light red" id="rUrl">Source</a>
+                              <a class="btn waves-effect waves-light" id="rUrl">Source</a>
+                              <a class="btn waves-effect waves-light" id="rSave">Save</a>
                         </div>
                     </div>
 

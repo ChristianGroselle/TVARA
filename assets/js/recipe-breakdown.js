@@ -69,7 +69,7 @@ function buildApiURL(){
         if(time < 1){
             rTimeEl.text("Cooking Time: N/A");
         } else {
-            rTimeEl.text("Cooking Time: " + time);
+            rTimeEl.text("Cooking Time: " + time + " minutes");
         }
 
         if(yield < 1){
