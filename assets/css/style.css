@@ -6,17 +6,24 @@
   overflow:auto;
 }
 
-html{
-  background-image: url("/assets/images/homepage-food.webp");
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: block;
-  height: 100%;
+
+
+header {
+  color: #ff0000;
+  text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
 }
+
 
 body {
   text-align: center;
+  background-image: url('/assets/images/homepage-food.webp');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .btn {
