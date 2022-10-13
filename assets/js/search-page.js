@@ -163,7 +163,16 @@ function getDishParam(i){
 //builds the HTML for the recipe cards
 //needs recipie detail page to be built before it can be finalized
 function buildRecipeCard(rTitle, rLink, rImg, rTime, rYield, rID) {
-    recipeCardListEl.append('<li><div class="card-panel grey lighten-5 z-depth-1"><div class="row valign-wrapper"><div class="col s4"><img src="'+rImg+'" alt="recipe" class="circle responsive-img"></div><div class="col s8"><span class="black-text"><h4>'+rTitle+'</h4><div>Cooking Time: '+rTime+'</div><div>Feeds: '+rYield+'</div></span></div></div><div class="card-action"><div class="col s4"><a class="btn waves-effect waves-light left-align" href="'+rLink+'">Source</a></div><div class="col s4"><a class="btn waves-effect waves-light center-align" id="rSave" href="#">Save</a></div><div class="col s4"><a class="btn waves-effect waves-light right-align" href="./recipe-breakdown.html?='+ rID +'">Cook!</a></div></div></div></li>');
+    recipeCardListEl.append('<li><div id="'+ rID +'" class="card-panel grey lighten-5 z-depth-1"><div class="row valign-wrapper"><div class="col s4"><img src="'+rImg+'" alt="recipe" class="circle responsive-img"></div><div class="col s8"><span class="black-text"><h4>'+rTitle+'</h4><div>Cooking Time: '+rTime+'</div><div>Feeds: '+rYield+'</div></span></div></div><div class="card-action"><div class="col s4"><a class="btn waves-effect waves-light left-align" href="'+rLink+'">Source</a></div><div class="col s4"><a class="btn waves-effect waves-light center-align saveBtn" href="#">Save</a></div><div class="col s4"><a class="btn waves-effect waves-light right-align" href="./recipe-breakdown.html?='+ rID +'">Cook!</a></div></div></div></li>');
+    let cardEl = $('#'+rID);
+    cardEl.data('meta', {
+      title: rTitle,
+      url: rLink,
+      img: rImg,
+      time: rTime,
+      yield: rYield,
+      id: rID
+    });
   }
 
 //building the API request url
