@@ -8,6 +8,13 @@ Build out the UI
 [ ] Cards for recipe returns
 [ ] Make site responsive
 
+Adding new API to site
+[ ] look at new APIs that are food-related
+[ ] add it to program
+
+Trying to get Kroger API to work
+[ ] 
+
 Integrate one API (Spoonacular) into the UI
 Integrate another API (Zestful???) into the UI
 Find CSS API that is not Bootstrap (try CSS)
