@@ -92,8 +92,12 @@ function buildApiURL(){
             let iName = data.recipe.ingredients[i].food;
             let iQuant = data.recipe.ingredients[i].quantity;
             let unit = data.recipe.ingredients[i].measure;
+            
+            // ********************
+            // get access to price var below
+            let price = getPrductPrice(iName);
 
-            ingTableEl.append('<tr><td>' + iName + '</td><td>' + iQuant + ' ' + unit + '</td><td> N/A </td></tr>');
+            ingTableEl.append('<tr><td>' + iName + '</td><td>' + iQuant + ' ' + unit + '</td><td>'+ price + '</td></tr>');
         }
 
         //building Nutruebts list

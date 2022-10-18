@@ -1,7 +1,7 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ad8ee56eec05ec98d30da04e54cac40142833a2f
+//<<<<<<< HEAD
+//<<<<<<< HEAD
+//=======
+//>>>>>>> ad8ee56eec05ec98d30da04e54cac40142833a2f
 //edamam api testing
 //test request url
 //https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=eaff234d&app_key=4726246f26709a39dee3c8328f230c5e%09&mealType=Dinner&field=url
@@ -28,10 +28,10 @@ function getApi() {
       });
   }
 
-<<<<<<< HEAD
-getApi();
-=======
->>>>>>> 680ea184121e5af6dfc86f35d8655f6b27b12651
-=======
+//<<<<<<< HEAD
+//getApi();
+//=======
+//>>>>>>> 680ea184121e5af6dfc86f35d8655f6b27b12651
+//=======
   // getApi();
->>>>>>> ad8ee56eec05ec98d30da04e54cac40142833a2f
+//>>>>>>> ad8ee56eec05ec98d30da04e54cac40142833a2f
