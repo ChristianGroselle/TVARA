@@ -1,21 +1,29 @@
+:root {
+  --backgroundColor: #979aaa;
+  --backgroundColor2: #838996;
+  --textColor: #000;
+  --btnColor: #4c516d;
+  --accColor: 	#8b8589;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: "Krona One";
 
-  overflow:auto;
+  /* overflow:auto; */
 }
 
 
 
 header {
-  color: #ff0000;
-  text-shadow:
+  color: var(--textColor);
+  /* text-shadow:
 		-1px -1px 0 #000,
 		1px -1px 0 #000,
 		-1px 1px 0 #000,
-		1px 1px 0 #000;
+		1px 1px 0 #000; */
 }
 
 
@@ -29,7 +37,7 @@ body {
 
 .btn {
   margin: auto;
-  background-color: black;
+  background-color: var(--btnColor);
   display: inline-block;
   border-radius:10px ;
 }
@@ -58,4 +66,20 @@ align-items: center;
 
 .bottom-margin {
     margin-bottom: 70%;
+}
+
+.bgColor{
+  background-color: var(--backgroundColor);
+}
+
+.bgColor2{
+  background-color: var(--backgroundColor2);
+}
+
+.btnColor{
+  background-color: var(--btnColor);
+}
+
+.accColor{
+  background-color: var(--accColor);
 }

@@ -25,16 +25,20 @@
     
       <ul class="sidenav" id="mobile-demo">
         <li><a href="../../index.html">Home</a></li>
-        <li><a href="#">Saved</a></li>
+        <li><a href="./saved.html">Saved</a></li>
       </ul>
 
     <header class="col s12 m4 l2 center-align">
-        <h2>Search</h2>
-        <h5>Recipes tailored to you</h3>
+        <div class="container">
+            <div class="card-panel bgColor">
+                <h2>Search</h2>
+                <h5>Recipes tailored to you</h5>
+            </div>
+        </div>
     </header>
 
     <main class="container">
-        <div class="row">
+        <div class="row bgColor">
 
             <!-- Health/Diet modal structure -->
             <div id="healthModal" class="modal modal-fixed-footer">
@@ -200,10 +204,10 @@
                 <!-- Health/Diet Modal -->
                 <div class="col s12 m6">
                     <!-- Modal Trigger -->
-                    <a class="waves-effect waves-light btn-large modal-trigger" href="#healthModal">Diets/Health Restricitons</a>
+                    <a class="waves-effect waves-light btn-large modal-trigger btnColor" href="#healthModal">Diets/Health Restricitons</a>
                 </div>
                 <div class="col s12 m6 right-align">
-                    <button class="btn-large waves-effect waves-light" id="searchBtn">Search</button>
+                    <button class="btn-large waves-effect waves-light btnColor" id="searchBtn">Search</button>
                 </div>
             </div>
             <!-- right side -->
@@ -213,7 +217,7 @@
                 <div class="card-panel col s12">
                     <div class="row valign-wrapper">
                         <div class="col s4 center-align">
-                            <a class="waves-effect waves-light btn-large" id="prevPageBtn">Previous</a>
+                            <a class="waves-effect waves-light btn-large btnColor" id="prevPageBtn">Previous</a>
                         </div>
                         <div class="col s4">
                             <div class="center-align">
@@ -222,7 +226,7 @@
                             </div>
                         </div>
                         <div class="col s4 center-align">
-                            <a class="waves-effect waves-light btn-large " id="nxtPageBtn">Next</a>
+                            <a class="waves-effect waves-light btn-large btnColor" id="nxtPageBtn">Next</a>
                         </div>
                     </div>
                 </div>
