@@ -83,3 +83,7 @@ align-items: center;
 .accColor{
   background-color: var(--accColor);
 }
+
+.txtColor {
+  color: var(--textColor);
+}
