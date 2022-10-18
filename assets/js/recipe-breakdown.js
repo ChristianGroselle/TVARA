@@ -1,4 +1,3 @@
-console.log(window.location.href);
 //initialization for materialize js
 M.AutoInit();
 //example search by id Url:
@@ -15,7 +14,9 @@ var nutTableEl = $('#nutTable');
 var healthTableEl = $('#healthTable');
 var dietTableEl = $('#dietTable');
 var cautionTableEl = $('#cautTable');
+var rSaveBtnEl = $('#rSave');
 
+var saveObj = {};
 var recipeId = "";
 var nutRefArray = ['SUGAR.added','CA','CHOCDF.net','CHOCDF','CHOLE','ENERC_KCAL','FAMS','FAPU','FAPU','FASAT','FATRN','FIBTG','FOLDFE','FOLFD','FOLAC','FE','MG','NIA','P','K','PROCNT','RIBF','NA','Sugar.alcohol','SUGAR','THIA','FAT','VITA_RAE','VITB12','VITB6A','VITC','VITD','TOCPHA','VITK1','WATER','ZN'];
 
@@ -42,10 +43,6 @@ function buildApiURL(){
     return workingURL;
   }
 
-//   function buildPage(title, time, yield, cal, ){
-
-//   }
-
   function getApi(requestUrl) {
     
 
@@ -63,6 +60,12 @@ function buildApiURL(){
         let url = data.recipe.url;
         let img = data.recipe.images.REGULAR.url;
 
+        rSaveBtnEl.attr('data-id', readQParam(window.location.href));
+        rSaveBtnEl.attr("data-title", title);
+        rSaveBtnEl.attr("data-time", time);
+        rSaveBtnEl.attr("data-yield", yield);
+        rSaveBtnEl.attr("data-url", url);
+        rSaveBtnEl.attr("data-img", img);
 
         titleEl.text(title);
 
