@@ -31,15 +31,8 @@ function getAPI() {
 export function getProductPrice(productName) {
   return 5;
 }
-let price = getPrductPrice(iName);
 
 
-            
-            // ********************
-            // get access to price var below
-            let price = getPrductPrice(iName);
-
-            ingTableEl.append('<tr><td>' + iName + '</td><td>' + iQuant + ' ' + unit + '</td><td>'+ price + '</td></tr>');
 
 // Declaring var values
 var searchValue = '';

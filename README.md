@@ -33,6 +33,7 @@ Products (Public): product.compact
 
 Grant Type: authorization_code, client_credentials, refresh_token
 
+TVARA - 1
 
 curl -X POST \
   'https://api.kroger.com/v1/connect/oauth2/token' \
@@ -78,3 +79,31 @@ curl -X GET \
   'https://api.kroger.com/v1/products/0001111041700?filter.locationId={{LOCATION_ID}}' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vYXBpLmtyb2dlci5jb20vdjEvLndlbGwta25vd24vandrcy5qc29uIiwia2lkIjoiWjRGZDNtc2tJSDg4aXJ0N0xCNWM2Zz09IiwidHlwIjoiSldUIn0.eyJhdWQiOiJ0dmFyYS05YWIxMmY5YzU3MTAwY2Y5MjUxNzk2YmMyMTAyOGVhMjM4MDM5Mjk3NDI3MDMwMTU3ODIiLCJleHAiOjE2NjYwNDIwNTAsImlhdCI6MTY2NjA0MDI0NSwiaXNzIjoiYXBpLmtyb2dlci5jb20iLCJzdWIiOiIzOWFjYjNiMS1kYTI3LTUwYTMtYTVhNC01OGMwZTY4ZTA3ZjQiLCJzY29wZSI6InByb2R1Y3QuY29tcGFjdCIsImF1dGhBdCI6MTY2NjA0MDI1MDAwOTM4NjE2MCwiYXpwIjoidHZhcmEtOWFiMTJmOWM1NzEwMGNmOTI1MTc5NmJjMjEwMjhlYTIzODAzOTI5NzQyNzAzMDE1NzgyIn0.HEZe_Mm89k0Tl9a2d6gbuAHM4P9-jLn3EP3AmNxY0YnGK9e2dtNhpEuPJdmkgdMGR0DRgjBbX1mwDXTwt02t3zr5JjjLHZWdx-gOWuPy3P3krir4uwQ9FlviM8V-3Cr_wcJ4csZhdHlgIZnlMj8DxKWZ6_9ROGUb4CHT23GHXbKCPcqD0F4_gWX9zBKVjn-dQiwQ2Kp0SveRd-nbB2wn-O9IwMOGqyyqA4ybPaw2kAKAwqjg31V0BoAC5Lz6xdTjhKiH2oq3W54uYrHB2owX5aMhM_cyCAXY6os8jqPmfztjk2BWAXaSd1Z7cEjUUxhSrhO-SA6HLoas0xEQaV2ghQ'
+
+
+------------
+
+TVARA - 2
+
+client_id: tvara2-722d70ff89d515fd435bc8909c964cf55847317557410057397
+
+client_secret: tQN5KRypd7da2RITkt0SN71VZz-EKB6umm824SC5
+
+encoded: dHZhcmEyLTcyMmQ3MGZmODlkNTE1ZmQ0MzViYzg5MDljOTY0Y2Y1NTg0NzMxNzU1NzQxMDA1NzM5Nzp0UU41S1J5cGQ3ZGEyUklUa3QwU043MVZaei1FS0I2dW1tODI0U0M1
+
+
+// API linking authorization code
+curl -X POST \
+  'https://api.kroger.com/v1/connect/oauth2/token' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Authorization: Basic dHZhcmEyLTcyMmQ3MGZmODlkNTE1ZmQ0MzViYzg5MDljOTY0Y2Y1NTg0NzMxNzU1NzQxMDA1NzM5Nzp0UU41S1J5cGQ3ZGEyUklUa3QwU043MVZaei1FS0I2dW1tODI0U0M1' \
+  -d 'grant_type=client_credentials' \
+  --compressed
+
+
+// Access Token
+curl -X POST \
+  'https://api.kroger.com/v1/connect/oauth2/token' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Authorization: Basic dHZhcmEyLTcyMmQ3MGZmODlkNTE1ZmQ0MzViYzg5MDljOTY0Y2Y1NTg0NzMxNzU1NzQxMDA1NzM5Nzp0UU41S1J5cGQ3ZGEyUklUa3QwU043MVZaei1FS0I2dW1tODI0U0M1' \
+  -d 'grant_type=client_credentials&scope=product.compact'

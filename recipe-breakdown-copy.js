@@ -16,11 +16,7 @@ var dietTableEl = $('#dietTable');
 var cautionTableEl = $('#cautTable');
 var rSaveBtnEl = $('#rSave');
 
-var relatedRecipesListEl = $('#relatedRecipesList');
-
 let title = "";
-let keywords = "";
-var relatedRecipes = [];
 
 var saveObj = {};
 var recipeId = "";
@@ -49,6 +45,8 @@ function buildApiURL(){
     return workingURL;
   }
 
+  var relatedRecipes = [];
+
   function getApi(requestUrl) {
     
 
@@ -76,50 +74,13 @@ function buildApiURL(){
         titleEl.text(title);
 
         // [ ] combs through the title, splits it up into separate words, and combs through each keyword and calls getRelatedRecipes functionw with that keyword
-        keywords = title.split(" ");
-        
-        /*
+        let keywords = title.split(" ");
         for (var i = 0; i < keywords.length; i++) {
            getRelatedRecipes(keywords[i]);
+           //console.log(relatedRecipes);
         };
-        */
 
-        var waiTime = 1500;
-        //console.log(keywords.length);
-        var timer = Math.ceil((keywords.length/5));
-
-
-
-        for (var y = 0; y < timer; y++) {
-            //console.log(keywords.length);
-            
-            //setTimeout(function() {
-                if(keywords.length > 5){
-                    //setTimeout(function() {
-                    for(let z = 0; z < 5; z++){
-                        console.log("if");
-                        console.log(keywords[0]);
-                        console.log(keywords.length);
-                        getRelatedRecipes(keywords[0]);
-                        keywords.shift();
-                    }
-                    //}, waiTime);
-                  }else if (keywords.length <= 5) {
-                    setTimeout(function(){
-                        for(let i = 0; i < keywords.length; i++){
-                            console.log("else");
-                            getRelatedRecipes(keywords[i]);
-                            console.log(keywords[i]);
-                            console.log(keywords.length);
-                            //keywords.shift();
-                        }
-                    }, waiTime);
-                  }
-            //}, waiTime);
-        }
-
-          
-
+        //console.log(relatedRecipes);
 
         if(time < 1){
             rTimeEl.text("Cooking Time: N/A");
@@ -185,7 +146,7 @@ function getRelatedRecipes(recipeName) {
     var url = "https://tasty.p.rapidapi.com/recipes/auto-complete?prefix=" + recipeName;
     //console.log(url);
     //console.log('this is recipeName: ' + recipeName);
-    console.log(recipeName);
+    //console.log(recipeName[0]);
 
     // code snippet below provided by API to pull the API
 
@@ -196,58 +157,146 @@ function getRelatedRecipes(recipeName) {
             'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
         }
     };
+    
+
 
     fetch(url, options)
-    .then(response => response.json())
-    //.then(response => console.log(response))
-    .then(response => ( updateRelatedRecipes(response) ))
-    //.then(console.log(relatedRecipes))
-    .catch(err => console.error(err));
-
+        .then(response => response.json())
+        //.then(response => console.log(response))
+        .then(response => ( updateRelatedRecipes(response) ))
+        //.then(console.log(relatedRecipes))
+        .catch(err => console.error(err));
 
 }
 
 // [ ] remove the duplicates is the last item on the agenda
-// Related recipes... takes the title of the page, breaks it into separate words
+// takes the title of the page, breaks it into separrate words
 // each word gets its own call of updateRelatedRecipes
-// within updateRelatedRecipes, we we're ultimately trying to append the Related Recipes tab to show list of related recipes
-// this is done by 
 
 function updateRelatedRecipes(newRecipes) {
     // combining new recipes with the old ones
     // creates a multidimensional array, which we don't want. We want to rm 192, 194, and inside forEach loop
+    relatedRecipes = relatedRecipes.concat(newRecipes);
+    // flattens the array because it's multi-dimenstional. We want a one-dimensional array.
+    relatedRecipes = relatedRecipes.flat();
+    // get relatedRecipeList dom element
+    let list = document.getElementById("relatedRecipeList");
+    // we loop through the related recipes. 
+    // inside API Reponse is a results property
+    // inside the results property is an array of recipe objects
+    relatedRecipes.forEach((apiResponse) => {
+        // we grab the results property from the recipe objects
+        let results = apiResponse.results;
+        // with the results array, we iterate over it and forEach loop, we're setting it to list elemets text. And then appending each element to the list
+        results.forEach((recipe) => {
+            let li = document.createElement("li");
+            // sets innerText within HTML to the 
+            li.innerText = recipe.display;
+            list.append(li);})
+        
+    })
+    console.log(relatedRecipes);
 
-    console.log(newRecipes);
-    //console.log(newRecipes.results[0].display);
-    //console.log(newRecipes.results[1]);
-
-    // need to define length by number of displays within array
-    //console.log(newRecipes.results.length);
-
-    // need to test to see if there is content / inventory in the array
-    //console.log(newRecipes.results[0]);
-
-    //make API call. Wait 1 seconds. Then make another API call.
-    //if length of array is over 5, run it for the first 5 items, wait 1.5 seconds. Then run again until .length.
-
-    for (i = 0; i < newRecipes.results.length; i++) {
-        console.log(newRecipes.results[i].display);
-        relatedRecipesListEl.append('<tr><td>' + newRecipes.results[i].display + '</td></tr>');
-
+    //relatedRecipes = newRecipes;
+    /*
+    if (newRecipes) {
+        relatedRecipes.push(...newRecipes);
     }
+    */
+    //console.log(newRecipes);
+    //console.log(relatedRecipes);
 }
 
 /*
 
 Tasty API Implementation
 JS Updates
-[x] have Tasty API pull and list of related recipes
+[ ] have Tasy API pull and list of similar recipes
 
 HTML Updates
-[x] add 'Similar Recipes' tab to the right of 'Labels tab'
+[ ] add 'Similar Recipes' tab to the right of 'Labels tab'
 
 */
 
+
+// Gets Access token every time the page is loaded
+/*
+$(function() {
+    getRelatedRecipes();
+});
+*/
+
+//--------------
+
+// Kroger API Implementation
+
+/*
+Getting data array to work:
+[x] need to break up URL endpoints
+[ ] need to create code that programmatically updates access tokens / get Refresh Tokens grant access
+
+Getting location and pricing to work:
+[ ] need to get location ID
+[ ] need to add location so that we can get specific prices. All prices will be via the specific location.
+
+Getting html/js search bar to work
+[ ] make it so that when a user inputs a search query, the searchValue variable updates
+*/
+
+/*
+
+// Declaring variables
+const access_token = '';
+const apiDomain = 'https://api-ce.kroger.com/v1';
+const locationEndpoint = '/locations?';
+const productsEndpoint = '/products?';
+const authEndpoint = '/connect/oauth2/token'
+const secret = 'dHZhcmEyLTcyMmQ3MGZmODlkNTE1ZmQ0MzViYzg5MDljOTY0Y2Y1NTg0NzMxNzU1NzQxMDA1NzM5Nzp0UU41S1J5cGQ3ZGEyUklUa3QwU043MVZaei1FS0I2dW1tODI0U0M1';
+var recipeValue = '';
+
+
+var url = 'https://api.kroger.com/v1/products?filter.term=carrot' + recipeValue + '&filter.limit=2&access_token=' + access_token;
+
+console.log(url);
+
+// Gets access Token
+$.get(url, function(responseText) {
+    console.log('This is the URL variable: ' + url);
+    console.log('Below is updated GET request:');
+    console.log(responseText);
+    console.log(responseText.data[0]);
+    console.log(responseText.data[0].productId);
+  });
+
+// Gets product price from Kroger API
+function getProductPrice(productName) {
+    return 5;
+}
+
+// Sets new access token once per page load
+function setAccessToken() {
+    $.ajax({
+        url: apiDomain + authEndpoint,
+        method: "POST",
+        crossDomain: true,
+        cache: false,
+        data: "grant_type=client_credentials&scope=product.compact",
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", "Basic " + secret);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.setRequestHeader("Access-Control-Allow-Origin", "");
+        },
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+
+}
+
+*/
 
 recipeId = readQParam(window.location.href);
 console.log(recipeId);
