@@ -1,9 +1,18 @@
 :root {
-  --backgroundColor: #979aaa;
+  /* --backgroundColor: #979aaa;
+   --backgroundColor: #000;
   --backgroundColor2: #838996;
-  --textColor: #000;
+  --textColor: #fff;
   --btnColor: #4c516d;
-  --accColor: 	#8b8589;
+  --accColor: 	#8b8589; */
+
+  --backgroundColor: #373737;
+  /* --backgroundColor: #3c6e71; */
+  --backgroundColor2: #7A82AB;
+  --textColor: #fff;
+  --btnColor: #BA2D0B;
+  --accColor: 	#3c6e71;
+  --offWhite: #EEE5E9;
 }
 
 * {
@@ -86,4 +95,12 @@ align-items: center;
 
 .txtColor {
   color: var(--textColor);
+}
+
+.offWhite {
+  background-color: var(--offWhite);
+}
+
+.txtOffWhite {
+  color: var(--offWhite);
 }

@@ -96,7 +96,7 @@ function buildApiURL(){
             let iQuant = data.recipe.ingredients[i].quantity;
             let unit = data.recipe.ingredients[i].measure;
 
-            ingTableEl.append('<tr><td>' + iName + '</td><td>' + iQuant + ' ' + unit + '</td><td> N/A </td></tr>');
+            ingTableEl.append('<tr><td>' + iName + '</td><td>' + iQuant + ' ' + unit + '</td></tr>');
         }
 
         //building Nutruebts list

@@ -3,7 +3,7 @@ M.AutoInit();
 savedListEl = $('#savedList');
 
 function buildRecipeCard(rTitle, rLink, rImg, rTime, rYield, rID) {
-    savedListEl.append('<li><div class="card-panel lighten-5 z-depth-1 bgColor"><div class="row valign-wrapper"><div class="col s4"><img src="'+rImg+'" alt="recipe" class="circle responsive-img"></div><div class="col s8"><span class="black-text"><h4>'+rTitle+'</h4><div>Cooking Time: '+rTime+'</div><div>Feeds: '+rYield+'</div></span></div></div><div class="card-action"><div class="col s4"><a class="btn waves-effect waves-light left-align" href="'+rLink+'">Source</a></div><div class="col s4"><a class="btn waves-effect waves-light center-align removeBtn" id="'+ rID +'" href="#">Remove</a></div><div class="col s4"><a class="btn waves-effect waves-light right-align" href="./recipe-breakdown.html?='+ rID +'">Cook!</a></div></div></div></li>');
+    savedListEl.append('<li><div class="card-panel lighten-5 z-depth-1 offWhite"><div class="row valign-wrapper"><div class="col s4"><img src="'+rImg+'" alt="recipe" class="circle responsive-img"></div><div class="col s8"><span class="black-text"><h4>'+rTitle+'</h4><div>Cooking Time: '+rTime+'</div><div>Feeds: '+rYield+'</div></span></div></div><div class="card-action"><div class="col s4"><a class="btn waves-effect waves-light left-align" href="'+rLink+'">Source</a></div><div class="col s4"><a class="btn waves-effect waves-light center-align removeBtn" id="'+ rID +'" href="#">Remove</a></div><div class="col s4"><a class="btn waves-effect waves-light right-align" href="./recipe-breakdown.html?='+ rID +'">Cook!</a></div></div></div></li>');
   }
 
 function buildList(){
