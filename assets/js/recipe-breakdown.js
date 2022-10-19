@@ -19,6 +19,8 @@ var rSaveBtnEl = $('#rSave');
 var saveObj = {};
 var recipeId = "";
 var nutRefArray = ['SUGAR.added','CA','CHOCDF.net','CHOCDF','CHOLE','ENERC_KCAL','FAMS','FAPU','FAPU','FASAT','FATRN','FIBTG','FOLDFE','FOLFD','FOLAC','FE','MG','NIA','P','K','PROCNT','RIBF','NA','Sugar.alcohol','SUGAR','THIA','FAT','VITA_RAE','VITB12','VITB6A','VITC','VITD','TOCPHA','VITK1','WATER','ZN'];
+var pantry = Pantry();
+var ingredients_used = [];
 
 //reads the query parameters
 function readQParam(currUrl){
@@ -41,9 +43,9 @@ function buildApiURL(){
   
     console.log(workingURL);
     return workingURL;
-  }
+}
 
-  function getApi(requestUrl) {
+function getApi(requestUrl) {
     
 
     fetch(requestUrl)
@@ -93,10 +95,33 @@ function buildApiURL(){
         //building Ingredients list
         for(let i = 0; i < data.recipe.ingredients.length; i++){
             let iName = data.recipe.ingredients[i].food;
-            let iQuant = data.recipe.ingredients[i].quantity;
+            let iQuant = data.recipe.ingredients[i].quantity.toFixed(2);    // limit the quantity to 2 decimal points
             let unit = data.recipe.ingredients[i].measure;
+            if (unit==="<unit>") {
+                unit=iName;
+            }
+            let ingredientMetadata = pantry.get_ingredient(iName);
+            ingredients_used.push({name:iName.toLowerCase(),quantity:IngredientQuantity(iQuant,unit)});
 
-            ingTableEl.append('<tr><td>' + iName + '</td><td>' + iQuant + ' ' + unit + '</td></tr>');
+            ingTableEl.append(
+              $("<tr>")
+                  .append(
+                      $("<td>")
+                          .text(iName)
+                  )
+                  .append(
+                      $("<td>")
+                          .text(iQuant + " " + unit)
+                  )
+                  .append(
+                      $("<td>")
+                          .text(
+                              ingredientMetadata.quantity.amount +
+                              " " +
+                              ingredientMetadata.quantity.unit
+                          )
+                  )
+            );
         }
 
         //building Nutruebts list
@@ -125,8 +150,28 @@ function buildApiURL(){
 
       });
       
-  }
+}
 recipeId = readQParam(window.location.href);
 console.log(recipeId);
 getApi(buildApiURL());
+pantry.load_from_storage();
 
+$("#pantryUse").click(function(){
+    for (let i=0;i<ingredients_used.length;i+=1) {
+        let name = ingredients_used[i].name;
+        let quantity = ingredients_used[i].quantity;
+        let ingredientMetadata = pantry.get_ingredient(name);
+        pantry.remove_from_ingredient(name,quantity);
+        ingTableEl
+            .children()
+            .eq(i)
+            .children()
+            .eq(2)
+            .text(
+                ingredientMetadata.quantity.amount +
+                " " +
+                ingredientMetadata.quantity.unit
+            )
+    }
+    pantry.save_to_storage();
+});
