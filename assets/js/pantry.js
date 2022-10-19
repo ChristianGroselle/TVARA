@@ -1,14 +1,3 @@
-// How to use: include this in the HTML: <script src="assets/js/pantry.js" type="module"></script>
-
-
-export {
-    Pantry,
-    IngredientMetadata,
-    IngredientQuantity,
-    UNITS,
-}
-
-
 const UNITS={
     tablespoons:"tbsp",
     teaspoons:"tsp",
@@ -106,11 +95,18 @@ function Pantry(storage_key) {
         //   If there was an error, then the `msg` field will be populated and will contain the error
         //   message. If there was no error, then the `loc` field will be populated with the location
         //   the user designated.
-        get_location:function(name) {
+        get_ingredient_location:function(name) {
             if (this.ingredients[name]) {
                 return {good:true,loc:this.ingredients[name].location};
             } else {
                 return {good:false,msg:"Ingredient "+name+" does not exist!"};
+            }
+        },
+        get_ingredient:function(name) {
+            if (this.ingredients[name]) {
+                return this.ingredients[name];
+            } else {
+                return IngredientMetadata(0,"kg","N/A");
             }
         },
     };
