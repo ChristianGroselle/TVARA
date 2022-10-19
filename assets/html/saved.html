@@ -11,10 +11,10 @@
     <title>TVARA Saved</title>
 </head>
 <body>
-    <nav class="black">
+    <nav class="accColor">
         <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">TVARA</a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <a href="../../index.html" class="brand-logo">TVARA</a>
+          <a href="#" data-target="sidenav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <li><a href="../../index.html">Home</a></li>
             <li><a href="./search.html">Search</a></li>
@@ -22,23 +22,28 @@
         </div>
     </nav>
     
-    <ul class="sidenav" id="mobile-demo">
-        <li><a href="../../index.html">Home</a></li>
-        <li><a href="#">Saved</a></li>
+    <ul class="sidenav accColor" id="sidenav">
+        <li><a class="white-text" href="../../index.html">Home</a></li>
+        <li><a class="white-text" href="./search.html">Search</a></li>
     </ul>
 
     <header class="col s12 m4 l2 center-align">
-        <h2>Saved</h2>
-        <h5>Recipes saved by you</h3>
+        <div class="container">
+            <div class="card-panel bgColor txtOffWhite">
+                <h2>Saved</h2>
+                <h5>Recipes saved by you</h5>
+            </div>
+        </div>
     </header>
 
     <main class="container">
         <div class="row">
             <div class="container">
-                <div class="card col 12">
+                <div class="card col 12 accColor">
                     <ul id="savedList">
+                        <!-- built in js -->
                         <!-- <li>
-                            <div class="card-panel grey lighten-5 z-depth-1">
+                            <div class="card-panel lighten-5 z-depth-1 bgColor">
                                 <div class="row valign-wrapper">
                                   <div class="col s4">
                                     <img src="../images/200.jfif" alt="" class="circle responsive-img">
