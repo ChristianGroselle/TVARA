@@ -21,6 +21,12 @@ const UNIT_MAP={
         litres:{
             scale_to_tsp:202.9,
         },
+        gallons:{
+            scale_to_tsp:768,
+        },
+        ounces:{
+            scale_to_tsp:6,
+        },
     },
     weight:{
         kg:{
@@ -34,6 +40,24 @@ const UNIT_MAP={
         },
     },
 };
+const UNIT_ALIASES={
+    pound:"lbs",
+    pounds:"lbs",
+    gram:"g",
+    grams:"g",
+    kilogram:"kg",
+    kilograms:"kg",
+    oz:"ounces",
+    ounce:"ounces",
+    gallon:"gallons",
+    gal:"gallons",
+    cup:"cups",
+    litre:"litres",
+    teaspoon:"tsp",
+    teaspoons:"tsp",
+    tablespoon:"tbsp",
+    tablespoons:"tbsp",
+};
 const WEIGHT_UNITS=[
     "kg",
     "g",
@@ -44,6 +68,8 @@ const VOLUME_UNITS=[
     "tbsp",
     "cups",
     "litres",
+    "gallons",
+    "ounces",
 ];
 
 
@@ -73,7 +99,7 @@ function Pantry(storage_key) {
         // @name: the name of the ingredient
         // @metadata: the `IngredientMetadata` of the current ingredient
         add_ingredient:function(name,metadata) {
-            ingredients[name]=metadata;
+            this.ingredients[name]=metadata;
         },
         // @ret: returns null if there are no errors or returns a non-zero length string if there was one
         add_to_ingredient:function(name,quantity) {
@@ -102,11 +128,15 @@ function Pantry(storage_key) {
                 return {good:false,msg:"Ingredient "+name+" does not exist!"};
             }
         },
+        // @name: the name of the ingredient. The name is converted to all lowercase before being used.
+        // @ret: returns the `IngredientMetadata` of the ingredient, or a blank `IngredientMetadata`
+        //   if it does not exist.
         get_ingredient:function(name) {
+            name=name.toLowerCase();
             if (this.ingredients[name]) {
                 return this.ingredients[name];
             } else {
-                return IngredientMetadata(0,"kg","N/A");
+                return IngredientMetadata(0,"","N/A");
             }
         },
     };
@@ -115,14 +145,14 @@ function Pantry(storage_key) {
 // @unit: the unit of measurement. Should be one of the ones stored in the `UNITS` map
 // @location: the location in your house. Just a string so it is easier to find
 function IngredientMetadata(amount,unit,location) {
-    return {quantity:IngredientQuantity(size,unit),location};
+    return {quantity:IngredientQuantity(amount,unit),location};
 }
 function IngredientQuantity(amount,unit) {
     return {
         amount,
         unit,
-        is_volume:VOLUME_UNITS.contains(unit),
-        is_weight:WEIGHT_UNITS.contains(unit),
+        is_volume:VOLUME_UNITS.includes(unit),
+        is_weight:WEIGHT_UNITS.includes(unit),
         // @ret: returns null if there are no errors or returns a non-zero length string if there was one
         add:function(other) {
             if (this.is_volume&&other.is_volume) {
@@ -131,17 +161,20 @@ function IngredientQuantity(amount,unit) {
                 let amount_a_scaled=this.amount*unit_scale_a;
                 let amount_b_scaled=other.amount*unit_scale_b;
                 this.amount=(amount_a_scaled+amount_b_scaled)/unit_scale_a;
-                return null;
             } else if (this.is_weight&&other.is_weight) {
                 let unit_scale_a=UNIT_MAP.weight[this.unit].scale_to_g;
                 let unit_scale_b=UNIT_MAP.weight[other.unit].scale_to_g;
                 let amount_a_scaled=this.amount*unit_scale_a;
                 let amount_b_scaled=other.amount*unit_scale_b;
                 this.amount=(amount_a_scaled+amount_b_scaled)/unit_scale_a;
-                return null;
             } else {
-                return "Unit "+other.unit+" cannot be added to "+this.unit;
+                if (this.unit===other.unit) {
+                    this.amount+=other.amount;
+                } else {
+                    return "Unit "+other.unit+" cannot be added to "+this.unit;
+                }
             }
+            return null;
         },
         // @ret: returns null if there are no errors or returns a non-zero length string if there was one
         remove:function(other) {
@@ -163,5 +196,15 @@ function IngredientQuantity(amount,unit) {
                 return "Unit "+other.unit+" cannot be subtracted from "+this.unit;
             }
         },
+        convert_to:function(unit_name) {
+        },
     };
+}
+// @ret: returns null if it could not find a unit name, or the unit name used by this API if its found.
+function unalias_unit_name(unit_name) {
+    if (UNIT_ALIASES[unit_name]) {
+        return UNIT_ALIASES[unit_name];
+    } else {
+        return null;
+    }
 }
