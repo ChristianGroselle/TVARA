@@ -116,6 +116,20 @@ function Pantry(storage_key) {
         add_ingredient:function(name,metadata) {
             this.ingredients[name]=metadata;
         },
+        // @name: name of the ingredient
+        // @amount: the new amount to set
+        // @unit: the new unit to set
+        update_ingredient:function(name,amount,unit) {
+            if (this.ingredients[name]) {
+                if (amount) {
+                    this.ingredients[name].quantity.amount=amount;
+                }
+                if (unit) {
+                    this.ingredients[name].quantity.unit=unit;
+                }
+                this.ingredients[name].quantity.update_units();
+            }
+        },
         // @ret: returns null if there are no errors or returns a non-zero length string if there was one
         add_to_ingredient:function(name,quantity) {
             if (this.ingredients[name]) {
@@ -127,10 +141,14 @@ function Pantry(storage_key) {
         // @ret: returns null if there are no errors or returns a non-zero length string if there was one
         remove_from_ingredient:function(name,quantity) {
             if (this.ingredients[name]) {
-                console.log(this.ingredients[name]);
                 return this.ingredients[name].quantity.remove(quantity);
             } else {
                 return "Ingredient "+name+" does not exist!";
+            }
+        },
+        remove_ingredient:function(name) {
+            if (this.ingredients[name]) {
+                delete this.ingredients[name];
             }
         },
         // @ret: returns an object with the field `good` set to a boolean saying if there was an error.
@@ -173,6 +191,10 @@ function IngredientQuantity(amount,unit) {
         unit,
         is_volume:VOLUME_UNITS.includes(unit),
         is_weight:WEIGHT_UNITS.includes(unit),
+        update_units:function() {
+            this.is_volume=VOLUME_UNITS.includes(unit);
+            this.is_weight=WEIGHT_UNITS.includes(unit);
+        },
         // @ret: returns null if there are no errors or returns a non-zero length string if there was one
         add:function(other) {
             if (this.is_volume&&other.is_volume) {
@@ -225,7 +247,6 @@ function IngredientQuantity(amount,unit) {
         },
         convert_to:function(unit_name) {
             let unit=unalias_unit_name(unit_name);
-            console.log(unit);
             if (this.is_weight) {
                 let unit_scale_from=UNIT_MAP.weight[this.unit].scale_to_g;
                 let unit_scale_to=UNIT_MAP.weight[unit].scale_to_g;
@@ -244,6 +265,7 @@ function IngredientQuantity(amount,unit) {
 // @ret: returns the original name if it could not find a unit name, or the unit name used by this
 //   API if its found.
 function unalias_unit_name(unit_name) {
+    unit_name=unit_name.toLowerCase();
     if (UNIT_ALIASES[unit_name]) {
         return UNIT_ALIASES[unit_name];
     } else {

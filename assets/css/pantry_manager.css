@@ -1,0 +1,18 @@
+.addItem {
+    width:25%;
+    margin-left:auto;
+    margin-right:auto;
+}
+.card-content {
+    margin-left:auto;
+    margin-right:auto;
+    border:1px solid #000;
+    width:75%;
+}
+.card * {
+    margin:auto;
+    margin-bottom:5px;
+}
+.card {
+    padding:10px;
+}
