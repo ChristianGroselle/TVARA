@@ -1,5 +1,8 @@
 var saveBtnEl = $('.saveBtn');
 var savedRecipeList = JSON.parse(localStorage.getItem('recipeList'));
+if(!savedRecipeList){
+    savedRecipeList = [];
+}
 function addLocalRecipe(targetEl){
     data = targetEl.dataset;
     let recipeObj = {id:data.id, title:data.title, time:data.time, yield:data.yield, url:data.url, img:data.img};
