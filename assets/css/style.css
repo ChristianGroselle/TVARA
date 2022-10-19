@@ -1,13 +1,7 @@
 :root {
-  /* --backgroundColor: #979aaa;
-   --backgroundColor: #000;
-  --backgroundColor2: #838996;
-  --textColor: #fff;
-  --btnColor: #4c516d;
-  --accColor: 	#8b8589; */
+
 
   --backgroundColor: #373737;
-  /* --backgroundColor: #3c6e71; */
   --backgroundColor2: #7A82AB;
   --textColor: #fff;
   --btnColor: #BA2D0B;
@@ -28,11 +22,6 @@
 
 header {
   color: var(--textColor);
-  /* text-shadow:
-		-1px -1px 0 #000,
-		1px -1px 0 #000,
-		-1px 1px 0 #000,
-		1px 1px 0 #000; */
 }
 
 
