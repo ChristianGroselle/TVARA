@@ -49,6 +49,10 @@ Chris Nguyen : https://github.com/Clinery1
 
 Mathhew Parker : https://github.com/mparker96
 
+Edamam API : https://www.edamam.com
+
+Tasty API : https://rapidapi.com/apidojo/api/tasty/
+
 ## License
 
 Please refer to the LICENSE in the repo.
