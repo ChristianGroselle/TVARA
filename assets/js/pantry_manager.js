@@ -1,8 +1,3 @@
-const MODES=[
-    "edit",
-    "delete",
-    "add",
-];
 const PANTRY_EL=$("#pantryIngredients");
 
 
