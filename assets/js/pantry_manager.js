@@ -10,7 +10,7 @@ function add_item(event) {
     let form=event.target.parentElement;
     let location=form.getAttribute("data-location");
     let name=form.children[2].value;
-    let quantity=form.children[4].value;
+    let quantity=Number(form.children[4].value);
     let unit=form.children[6].value;
     let metadata=IngredientMetadata(Number(quantity),unit,location);
     pantry.add_ingredient(name,metadata);
@@ -153,7 +153,7 @@ function create_ingredient_element(item_name,metadata) {
 function update_item(event) {
     let item_row=$(event.target.parentElement.parentElement);
     let name=item_row.attr("data-name");
-    let amount=item_row.children().eq(1).children().eq(0).val();
+    let amount=Number(item_row.children().eq(1).children().eq(0).val());
     let unit=item_row.children().eq(2).children().eq(0).val();
     pantry.update_ingredient(name,amount,unit);
     pantry.save_to_storage();
