@@ -1,3 +1,14 @@
+:root {
+
+
+  --backgroundColor: #373737;
+  --backgroundColor2: #7A82AB;
+  --textColor: #fff;
+  --btnColor: #BA2D0B;
+  --accColor: 	#3c6e71;
+  --offWhite: #EEE5E9;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -10,12 +21,7 @@
 
 
 header {
-  color: #ff0000;
-  text-shadow:
-		-1px -1px 0 #000,
-		1px -1px 0 #000,
-		-1px 1px 0 #000,
-		1px 1px 0 #000;
+  color: var(--textColor);
 }
 
 
@@ -29,7 +35,7 @@ body {
 
 .btn {
   margin: auto;
-  background-color: black;
+  background-color: var(--btnColor);
   display: inline-block;
   border-radius:10px ;
 }
@@ -58,4 +64,32 @@ align-items: center;
 
 .bottom-margin {
     margin-bottom: 70%;
+}
+
+.bgColor{
+  background-color: var(--backgroundColor);
+}
+
+.bgColor2{
+  background-color: var(--backgroundColor2);
+}
+
+.btnColor{
+  background-color: var(--btnColor);
+}
+
+.accColor{
+  background-color: var(--accColor);
+}
+
+.txtColor {
+  color: var(--textColor);
+}
+
+.offWhite {
+  background-color: var(--offWhite);
+}
+
+.txtOffWhite {
+  color: var(--offWhite);
 }

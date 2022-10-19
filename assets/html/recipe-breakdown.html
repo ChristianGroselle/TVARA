@@ -14,9 +14,9 @@
 
     <!-- nav bar for quickly navigating the pages -->
 
-    <nav class="black">
+    <nav class="accColor">
         <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">TVARA</a>
+          <a href="../../index.html" class="brand-logo">TVARA</a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <li><a href="../../index.html">Home</a></li>
@@ -33,18 +33,21 @@
       </ul>
 
     <header class="col s12 m4 l2 center-align">
-        <h3 id="titleTxt"></h3>
-        <!-- <h5>Brought to you by TVARA</h5> -->
+      <div class="container">
+        <div class="card-panel bgColor">
+          <h3 class="txtOffWhite" id="titleTxt"></h3>
+        </div>
+      </div> 
     </header>
 
     <main class="container">
         <div class="row">
             <!-- left third -->
-            <div class="col s12 m4">
+            <div class="col s12 m4 bgColor">
                 <div class="">
                 <!-- broad info card -->
-                    <div class="col s12">
-                        <div class="card-panel">
+                    <div class="col s12 accColor">
+                        <div class="card-panel offWhite">
                             <ul class="collection">
                                 <li class="collection-item" id="rTime"></li>
                                 <li class="collection-item" id="rYield"></li>
@@ -69,11 +72,11 @@
             <!-- right 2/3 -->
             <div class="col s12 m8">
                 <!-- tabbed card -->
-                <div class="col s12">
+                <div class="col s12 bgColor">
                     <div class="">
                         <div class="card">
                               <div class="card-tabs">
-                                <ul class="tabs tabs-fixed-width">
+                                <ul class="tabs tabs-fixed-width offWhite">
                                   <li class="tab"><a href="#ingTab">ingredients</a></li>
                                   <li class="tab"><a href="#nutTab">Nutrients</a></li>
                                   <li class="tab"><a href="#labelTab">Labels</a></li>
@@ -87,11 +90,12 @@
                                           <tr>
                                               <th>Food</th>
                                               <th>Quantity</th>
-                                              <th>Item Price</th>
+                                              <!-- <th>Item Price</th> -->
                                           </tr>
                                         </thead>
                                 
                                         <tbody id="ingTable">
+                                          <!-- built in js -->
                                           <!-- <tr>
                                             <td>food</td>
                                             <td>quantity</td>
@@ -112,6 +116,7 @@
                                         </thead>
                                 
                                         <tbody id="nutTable">
+                                          <!-- built in js -->
                                           <!-- <tr>
                                             <td>Alvin</td>
                                             <td>Eclair</td>
@@ -122,7 +127,7 @@
                                 <div id="labelTab">
                                     <div class="card">
                                         <div class="card-tabs">
-                                            <ul class="tabs tabs-fixed-width">
+                                            <ul class="tabs tabs-fixed-width offWhite">
                                               <li class="tab"><a href="#healthTab">Health Labels</a></li>
                                               <li class="tab"><a href="#dietTab">Diet Labels</a></li>
                                               <li class="tab"><a href="#cautTab">Cautions</a></li>
@@ -139,6 +144,7 @@
                                                     </thead>
                                             
                                                     <tbody id="healthTable">
+                                                      <!-- built in js -->
                                                       <!-- <tr>
                                                         <td>Alvin</td>
                                                       </tr> -->
@@ -155,6 +161,7 @@
                                                     </thead>
                                             
                                                     <tbody id="dietTable">
+                                                      <!-- built in js -->
                                                       <!-- <tr>
                                                         <td>Alvin</td>
                                                       </tr> -->
@@ -171,6 +178,7 @@
                                                     </thead>
                                             
                                                     <tbody id="cautTable">
+                                                      <!-- built in js -->
                                                       <!-- <tr>
                                                         <td>Alvin</td>
                                                       </tr> -->
