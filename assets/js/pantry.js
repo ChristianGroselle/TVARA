@@ -182,6 +182,7 @@ function IngredientMetadata(amount,unit,location) {
     return {quantity:IngredientQuantity(amount,unit),location};
 }
 function IngredientQuantity(amount,unit) {
+    amount=Number(amount);
     if (amount<0) {
         amount=0;
     }
@@ -238,7 +239,7 @@ function IngredientQuantity(amount,unit) {
                 this.amount=(amount_a_scaled-amount_b_scaled)/unit_scale_a;
             } else {
                 if (this.unit===other.unit) {
-                    this.amount+=other.amount;
+                    this.amount-=other.amount;
                 } else {
                     return "Unit "+other.unit+" cannot be subtracted from "+this.unit;
                 }
